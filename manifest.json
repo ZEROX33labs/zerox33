@@ -1,0 +1,898 @@
+[
+  {
+    "index": 0,
+    "file": "0.gif",
+    "trait": "KERNEL",
+    "variation": 0,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 1,
+    "file": "1.gif",
+    "trait": "KERNEL",
+    "variation": 1,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 2,
+    "file": "2.gif",
+    "trait": "KERNEL",
+    "variation": 2,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 3,
+    "file": "3.gif",
+    "trait": "KERNEL",
+    "variation": 3,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 4,
+    "file": "4.gif",
+    "trait": "KERNEL",
+    "variation": 4,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 5,
+    "file": "5.gif",
+    "trait": "KERNEL",
+    "variation": 5,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 6,
+    "file": "6.gif",
+    "trait": "KERNEL",
+    "variation": 6,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 7,
+    "file": "7.gif",
+    "trait": "KERNEL",
+    "variation": 7,
+    "rarity_tier": "KERNEL"
+  },
+  {
+    "index": 8,
+    "file": "8.gif",
+    "trait": "DAEMON",
+    "variation": 0,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 9,
+    "file": "9.gif",
+    "trait": "DAEMON",
+    "variation": 1,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 10,
+    "file": "10.gif",
+    "trait": "DAEMON",
+    "variation": 2,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 11,
+    "file": "11.gif",
+    "trait": "DAEMON",
+    "variation": 3,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 12,
+    "file": "12.gif",
+    "trait": "DAEMON",
+    "variation": 4,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 13,
+    "file": "13.gif",
+    "trait": "DAEMON",
+    "variation": 5,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 14,
+    "file": "14.gif",
+    "trait": "DAEMON",
+    "variation": 6,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 15,
+    "file": "15.gif",
+    "trait": "DAEMON",
+    "variation": 7,
+    "rarity_tier": "DAEMON"
+  },
+  {
+    "index": 16,
+    "file": "16.gif",
+    "trait": "THREAD",
+    "variation": 0,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 17,
+    "file": "17.gif",
+    "trait": "THREAD",
+    "variation": 1,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 18,
+    "file": "18.gif",
+    "trait": "THREAD",
+    "variation": 2,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 19,
+    "file": "19.gif",
+    "trait": "THREAD",
+    "variation": 3,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 20,
+    "file": "20.gif",
+    "trait": "THREAD",
+    "variation": 4,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 21,
+    "file": "21.gif",
+    "trait": "THREAD",
+    "variation": 5,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 22,
+    "file": "22.gif",
+    "trait": "THREAD",
+    "variation": 6,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 23,
+    "file": "23.gif",
+    "trait": "THREAD",
+    "variation": 7,
+    "rarity_tier": "THREAD"
+  },
+  {
+    "index": 24,
+    "file": "24.gif",
+    "trait": "SOCKET",
+    "variation": 0,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 25,
+    "file": "25.gif",
+    "trait": "SOCKET",
+    "variation": 1,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 26,
+    "file": "26.gif",
+    "trait": "SOCKET",
+    "variation": 2,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 27,
+    "file": "27.gif",
+    "trait": "SOCKET",
+    "variation": 3,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 28,
+    "file": "28.gif",
+    "trait": "SOCKET",
+    "variation": 4,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 29,
+    "file": "29.gif",
+    "trait": "SOCKET",
+    "variation": 5,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 30,
+    "file": "30.gif",
+    "trait": "SOCKET",
+    "variation": 6,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 31,
+    "file": "31.gif",
+    "trait": "SOCKET",
+    "variation": 7,
+    "rarity_tier": "SOCKET"
+  },
+  {
+    "index": 32,
+    "file": "32.gif",
+    "trait": "SIGNAL",
+    "variation": 0,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 33,
+    "file": "33.gif",
+    "trait": "SIGNAL",
+    "variation": 1,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 34,
+    "file": "34.gif",
+    "trait": "SIGNAL",
+    "variation": 2,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 35,
+    "file": "35.gif",
+    "trait": "SIGNAL",
+    "variation": 3,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 36,
+    "file": "36.gif",
+    "trait": "SIGNAL",
+    "variation": 4,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 37,
+    "file": "37.gif",
+    "trait": "SIGNAL",
+    "variation": 5,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 38,
+    "file": "38.gif",
+    "trait": "SIGNAL",
+    "variation": 6,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 39,
+    "file": "39.gif",
+    "trait": "SIGNAL",
+    "variation": 7,
+    "rarity_tier": "SIGNAL"
+  },
+  {
+    "index": 40,
+    "file": "40.gif",
+    "trait": "PIPE",
+    "variation": 0,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 41,
+    "file": "41.gif",
+    "trait": "PIPE",
+    "variation": 1,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 42,
+    "file": "42.gif",
+    "trait": "PIPE",
+    "variation": 2,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 43,
+    "file": "43.gif",
+    "trait": "PIPE",
+    "variation": 3,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 44,
+    "file": "44.gif",
+    "trait": "PIPE",
+    "variation": 4,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 45,
+    "file": "45.gif",
+    "trait": "PIPE",
+    "variation": 5,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 46,
+    "file": "46.gif",
+    "trait": "PIPE",
+    "variation": 6,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 47,
+    "file": "47.gif",
+    "trait": "PIPE",
+    "variation": 7,
+    "rarity_tier": "PIPE"
+  },
+  {
+    "index": 48,
+    "file": "48.gif",
+    "trait": "MUTEX",
+    "variation": 0,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 49,
+    "file": "49.gif",
+    "trait": "MUTEX",
+    "variation": 1,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 50,
+    "file": "50.gif",
+    "trait": "MUTEX",
+    "variation": 2,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 51,
+    "file": "51.gif",
+    "trait": "MUTEX",
+    "variation": 3,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 52,
+    "file": "52.gif",
+    "trait": "MUTEX",
+    "variation": 4,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 53,
+    "file": "53.gif",
+    "trait": "MUTEX",
+    "variation": 5,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 54,
+    "file": "54.gif",
+    "trait": "MUTEX",
+    "variation": 6,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 55,
+    "file": "55.gif",
+    "trait": "MUTEX",
+    "variation": 7,
+    "rarity_tier": "MUTEX"
+  },
+  {
+    "index": 56,
+    "file": "56.gif",
+    "trait": "BUFFER",
+    "variation": 0,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 57,
+    "file": "57.gif",
+    "trait": "BUFFER",
+    "variation": 1,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 58,
+    "file": "58.gif",
+    "trait": "BUFFER",
+    "variation": 2,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 59,
+    "file": "59.gif",
+    "trait": "BUFFER",
+    "variation": 3,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 60,
+    "file": "60.gif",
+    "trait": "BUFFER",
+    "variation": 4,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 61,
+    "file": "61.gif",
+    "trait": "BUFFER",
+    "variation": 5,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 62,
+    "file": "62.gif",
+    "trait": "BUFFER",
+    "variation": 6,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 63,
+    "file": "63.gif",
+    "trait": "BUFFER",
+    "variation": 7,
+    "rarity_tier": "BUFFER"
+  },
+  {
+    "index": 64,
+    "file": "64.gif",
+    "trait": "STACK",
+    "variation": 0,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 65,
+    "file": "65.gif",
+    "trait": "STACK",
+    "variation": 1,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 66,
+    "file": "66.gif",
+    "trait": "STACK",
+    "variation": 2,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 67,
+    "file": "67.gif",
+    "trait": "STACK",
+    "variation": 3,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 68,
+    "file": "68.gif",
+    "trait": "STACK",
+    "variation": 4,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 69,
+    "file": "69.gif",
+    "trait": "STACK",
+    "variation": 5,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 70,
+    "file": "70.gif",
+    "trait": "STACK",
+    "variation": 6,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 71,
+    "file": "71.gif",
+    "trait": "STACK",
+    "variation": 7,
+    "rarity_tier": "STACK"
+  },
+  {
+    "index": 72,
+    "file": "72.gif",
+    "trait": "HEAP",
+    "variation": 0,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 73,
+    "file": "73.gif",
+    "trait": "HEAP",
+    "variation": 1,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 74,
+    "file": "74.gif",
+    "trait": "HEAP",
+    "variation": 2,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 75,
+    "file": "75.gif",
+    "trait": "HEAP",
+    "variation": 3,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 76,
+    "file": "76.gif",
+    "trait": "HEAP",
+    "variation": 4,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 77,
+    "file": "77.gif",
+    "trait": "HEAP",
+    "variation": 5,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 78,
+    "file": "78.gif",
+    "trait": "HEAP",
+    "variation": 6,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 79,
+    "file": "79.gif",
+    "trait": "HEAP",
+    "variation": 7,
+    "rarity_tier": "HEAP"
+  },
+  {
+    "index": 80,
+    "file": "80.gif",
+    "trait": "CACHE",
+    "variation": 0,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 81,
+    "file": "81.gif",
+    "trait": "CACHE",
+    "variation": 1,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 82,
+    "file": "82.gif",
+    "trait": "CACHE",
+    "variation": 2,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 83,
+    "file": "83.gif",
+    "trait": "CACHE",
+    "variation": 3,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 84,
+    "file": "84.gif",
+    "trait": "CACHE",
+    "variation": 4,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 85,
+    "file": "85.gif",
+    "trait": "CACHE",
+    "variation": 5,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 86,
+    "file": "86.gif",
+    "trait": "CACHE",
+    "variation": 6,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 87,
+    "file": "87.gif",
+    "trait": "CACHE",
+    "variation": 7,
+    "rarity_tier": "CACHE"
+  },
+  {
+    "index": 88,
+    "file": "88.gif",
+    "trait": "FORK",
+    "variation": 0,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 89,
+    "file": "89.gif",
+    "trait": "FORK",
+    "variation": 1,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 90,
+    "file": "90.gif",
+    "trait": "FORK",
+    "variation": 2,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 91,
+    "file": "91.gif",
+    "trait": "FORK",
+    "variation": 3,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 92,
+    "file": "92.gif",
+    "trait": "FORK",
+    "variation": 4,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 93,
+    "file": "93.gif",
+    "trait": "FORK",
+    "variation": 5,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 94,
+    "file": "94.gif",
+    "trait": "FORK",
+    "variation": 6,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 95,
+    "file": "95.gif",
+    "trait": "FORK",
+    "variation": 7,
+    "rarity_tier": "FORK"
+  },
+  {
+    "index": 96,
+    "file": "96.gif",
+    "trait": "EXEC",
+    "variation": 0,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 97,
+    "file": "97.gif",
+    "trait": "EXEC",
+    "variation": 1,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 98,
+    "file": "98.gif",
+    "trait": "EXEC",
+    "variation": 2,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 99,
+    "file": "99.gif",
+    "trait": "EXEC",
+    "variation": 3,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 100,
+    "file": "100.gif",
+    "trait": "EXEC",
+    "variation": 4,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 101,
+    "file": "101.gif",
+    "trait": "EXEC",
+    "variation": 5,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 102,
+    "file": "102.gif",
+    "trait": "EXEC",
+    "variation": 6,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 103,
+    "file": "103.gif",
+    "trait": "EXEC",
+    "variation": 7,
+    "rarity_tier": "EXEC"
+  },
+  {
+    "index": 104,
+    "file": "104.gif",
+    "trait": "SWAP",
+    "variation": 0,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 105,
+    "file": "105.gif",
+    "trait": "SWAP",
+    "variation": 1,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 106,
+    "file": "106.gif",
+    "trait": "SWAP",
+    "variation": 2,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 107,
+    "file": "107.gif",
+    "trait": "SWAP",
+    "variation": 3,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 108,
+    "file": "108.gif",
+    "trait": "SWAP",
+    "variation": 4,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 109,
+    "file": "109.gif",
+    "trait": "SWAP",
+    "variation": 5,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 110,
+    "file": "110.gif",
+    "trait": "SWAP",
+    "variation": 6,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 111,
+    "file": "111.gif",
+    "trait": "SWAP",
+    "variation": 7,
+    "rarity_tier": "SWAP"
+  },
+  {
+    "index": 112,
+    "file": "112.gif",
+    "trait": "Z-RARE-I",
+    "variation": 0,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 113,
+    "file": "113.gif",
+    "trait": "Z-RARE-I",
+    "variation": 1,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 114,
+    "file": "114.gif",
+    "trait": "Z-RARE-I",
+    "variation": 2,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 115,
+    "file": "115.gif",
+    "trait": "Z-RARE-I",
+    "variation": 3,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 116,
+    "file": "116.gif",
+    "trait": "Z-RARE-I",
+    "variation": 4,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 117,
+    "file": "117.gif",
+    "trait": "Z-RARE-I",
+    "variation": 5,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 118,
+    "file": "118.gif",
+    "trait": "Z-RARE-I",
+    "variation": 6,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 119,
+    "file": "119.gif",
+    "trait": "Z-RARE-I",
+    "variation": 7,
+    "rarity_tier": "Z-RARE-I"
+  },
+  {
+    "index": 120,
+    "file": "120.gif",
+    "trait": "Z-RARE-II",
+    "variation": 0,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 121,
+    "file": "121.gif",
+    "trait": "Z-RARE-II",
+    "variation": 1,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 122,
+    "file": "122.gif",
+    "trait": "Z-RARE-II",
+    "variation": 2,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 123,
+    "file": "123.gif",
+    "trait": "Z-RARE-II",
+    "variation": 3,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 124,
+    "file": "124.gif",
+    "trait": "Z-RARE-II",
+    "variation": 4,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 125,
+    "file": "125.gif",
+    "trait": "Z-RARE-II",
+    "variation": 5,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 126,
+    "file": "126.gif",
+    "trait": "Z-RARE-II",
+    "variation": 6,
+    "rarity_tier": "Z-RARE-II"
+  },
+  {
+    "index": 127,
+    "file": "127.gif",
+    "trait": "Z-RARE-II",
+    "variation": 7,
+    "rarity_tier": "Z-RARE-II"
+  }
+]

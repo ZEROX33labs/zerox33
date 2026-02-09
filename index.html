@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZEROX33 — ERC404 on MegaETH</title>
+<meta name="description" content="ZEROX33 — ERC404 with 128 animated 3D cube NFTs on MegaETH.">
+<link rel="icon" type="image/png" href="./assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.9.0/ethers.umd.min.js"></script>
+<style>
+:root {
+    --bg: #141416;
+    --bg-raised: #1a1a1e;
+    --bg-card: #1e1e22;
+    --bg-hover: #222228;
+    --border: #2a2a30;
+    --border-light: #38383e;
+    --text: #e8e6e3;
+    --text-dim: #9e9c98;
+    --text-muted: #5e5c58;
+    --accent: #c8c6c2;
+    --white: #f4f2ef;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+    --sans: 'DM Sans', system-ui, sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:13px}
+
+/* NAV — MegaETH bracket style */
+nav{position:fixed;top:0;left:0;right:0;z-index:5000;height:52px;padding:0 36px;display:flex;justify-content:space-between;align-items:center;background:rgba(20,20,22,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-left{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{width:28px;height:28px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo-mark svg{width:18px;height:18px}
+.nav-brand{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:3px;color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:2px}
+.nav-a{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:6px 14px;transition:color 0.2s}
+.nav-a:hover{color:var(--text-dim)}
+.btn-w{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);background:transparent;border:1px solid var(--border);padding:8px 18px;cursor:pointer;transition:all 0.25s}
+.btn-w:hover{border-color:var(--border-light);color:var(--text);background:var(--bg-raised)}
+.btn-w.on{border-color:var(--text-muted);color:var(--text)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 36px 40px;position:relative}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 45%,rgba(255,255,255,0.015),transparent);pointer-events:none}
+.hero-logo{width:72px;height:72px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;margin-bottom:32px;opacity:0;animation:fi .7s ease .1s forwards}
+.hero-logo svg{width:46px;height:46px}
+.hero-h{font-family:var(--serif);font-size:clamp(48px,8vw,100px);font-weight:400;letter-spacing:2px;color:var(--white);text-align:center;line-height:1.05;opacity:0;animation:fi .7s ease .2s forwards}
+.hero-sub{font-family:var(--mono);font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--text-muted);margin-top:18px;opacity:0;animation:fi .7s ease .4s forwards}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:8px 20px;border:1px solid var(--border);font-size:10px;letter-spacing:2.5px;color:var(--text-muted);opacity:0;animation:fi .7s ease .55s forwards}
+.hero-tag .dot{width:5px;height:5px;border-radius:50%;background:var(--text-dim);animation:dp 2.5s infinite}
+@keyframes dp{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes fi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-arrow{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:3px;color:var(--text-muted);animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+
+/* SECTIONS */
+.sec{padding:72px 36px;max-width:1200px;margin:0 auto}
+.sec-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--text-muted);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:40px}
+
+/* MINT GRID */
+.mint-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* PREVIEW */
+.preview{position:relative;background:var(--bg-card);border:1px solid var(--border);aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview img{width:78%;height:78%;object-fit:contain;position:relative;z-index:1}
+.pv-tag{position:absolute;font-size:9px;letter-spacing:2px;color:var(--text-muted);z-index:2}
+.pv-tag.tl{top:14px;left:14px}.pv-tag.tr{top:14px;right:14px}.pv-tag.bl{bottom:14px;left:14px}.pv-tag.br{bottom:14px;right:14px}
+
+/* CARDS */
+.panel{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--bg-card);border:1px solid var(--border);padding:24px;transition:border-color .2s}
+.card:hover{border-color:var(--border-light)}
+.card-t{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+.r{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(42,42,48,0.5)}
+.r:last-child{border-bottom:none}
+.rk{font-size:11px;color:var(--text-dim)}
+.rv{font-size:11px;color:var(--text);font-weight:500}
+.rv.hi{color:var(--white)}
+.rv.st{display:flex;align-items:center;gap:6px}
+.rv.st::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--text-dim);animation:dp 2.5s infinite}
+
+/* QTY */
+.qty-wrap{display:flex;align-items:center;gap:18px;margin:14px 0}
+.qty-b{width:38px;height:38px;background:var(--bg-raised);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.qty-b:hover{border-color:var(--border-light);background:var(--bg-hover)}
+.qty-n{font-family:var(--serif);font-size:34px;font-weight:400;min-width:44px;text-align:center;color:var(--white)}
+.qty-note{font-size:10px;color:var(--text-muted)}
+.cost-row{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;border-top:1px solid var(--border);margin-top:10px}
+.cost-l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted)}
+.cost-v{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--white)}
+.cost-v small{font-size:11px;color:var(--text-dim);font-family:var(--mono);margin-left:3px}
+
+/* MINT BTN */
+.btn-mint{width:100%;padding:16px;background:transparent;border:1px solid var(--border-light);color:var(--text);font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-mint:hover{background:var(--bg-hover);border-color:var(--text-muted);color:var(--white)}
+.btn-mint:disabled{opacity:.25;cursor:not-allowed}
+.btn-mint:disabled:hover{background:transparent;border-color:var(--border-light);color:var(--text)}
+.btn-mint.ing{color:var(--text-muted)}
+
+/* USER CARD */
+.user-card{display:none}.user-card.show{display:block}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.gal-item{background:var(--bg-card);border:1px solid var(--border);overflow:hidden;transition:all .25s;cursor:pointer}
+.gal-item:hover{border-color:var(--border-light);transform:translateY(-2px)}
+.gal-item-img{aspect-ratio:1;overflow:hidden;background:var(--bg-raised)}
+.gal-item-img img{width:100%;height:100%;object-fit:cover}
+.gal-item-meta{padding:10px 12px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.gal-item-name{font-size:10px;color:var(--text)}
+.gal-item-trait{font-size:9px;color:var(--text-muted);letter-spacing:1px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about-c{background:var(--bg-card);border:1px solid var(--border);padding:24px}
+.about-n{font-family:var(--serif);font-size:32px;color:var(--text-muted);margin-bottom:12px}
+.about-h{font-family:var(--sans);font-size:13px;font-weight:600;margin-bottom:8px;color:var(--white)}
+.about-p{font-size:11px;color:var(--text-dim);line-height:1.65}
+
+/* EXPLORER */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tx-feed{display:flex;flex-direction:column}
+.tx-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s}
+.tx-row:hover{background:rgba(255,255,255,0.015)}
+.tx-addrs{font-size:10px;color:var(--text-dim)}
+.tx-time{font-size:9px;color:var(--text-muted)}
+.tx-empty{padding:16px 0;font-size:10px;color:var(--text-muted);text-align:center}
+
+/* TRAITS TABLE */
+.traits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.trait-chip{background:var(--bg-raised);border:1px solid var(--border);padding:10px 12px;text-align:center;transition:border-color .2s}
+.trait-chip:hover{border-color:var(--border-light)}
+.trait-chip-name{font-size:10px;letter-spacing:1.5px;color:var(--text)}
+.trait-chip-count{font-size:9px;color:var(--text-muted);margin-top:3px}
+
+/* STATUS BAR */
+.status{position:fixed;bottom:0;left:0;right:0;height:32px;padding:0 36px;background:rgba(20,20,22,0.94);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:1.5px;color:var(--text-muted);z-index:5000}
+.status-left,.status-right{display:flex;align-items:center;gap:8px}
+.chain-dot{width:4px;height:4px;border-radius:50%;background:#666}
+.chain-dot.on{background:var(--text-dim)}
+
+/* TOAST */
+.toast{position:fixed;top:68px;right:36px;background:var(--bg-card);border:1px solid var(--border);padding:14px 20px;font-size:11px;z-index:10000;transform:translateX(calc(100% + 60px));transition:transform .35s cubic-bezier(.16,1,.3,1);max-width:360px}
+.toast.show{transform:translateX(0)}
+.toast-t{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+
+/* FOOTER */
+footer{padding:40px 36px 80px;text-align:center;font-size:10px;letter-spacing:2px;color:var(--text-muted);border-top:1px solid var(--border)}
+footer a{color:var(--text-dim);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--text)}
+
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border)}
+
+@media(max-width:900px){.mint-grid,.exp-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.traits-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){nav,.sec,.status{padding-left:16px;padding-right:16px}.hero{padding:80px 16px 40px}.nav-a{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo-mark" id="navLogo"></div>
+    <span class="nav-brand">ZEROX33</span>
+  </div>
+  <div class="nav-right">
+    <a class="nav-a" href="#mint">[ MINT ]</a>
+    <a class="nav-a" href="#gallery">[ GALLERY ]</a>
+    <a class="nav-a" href="#traits">[ TRAITS ]</a>
+    <a class="nav-a" href="#explorer">[ EXPLORER ]</a>
+    <a class="nav-a" href="https://x.com/zerox33labs" target="_blank">[ X ]</a>
+    <button class="btn-w" id="btnC" onclick="connectWallet()">[ CONNECT ]</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-logo" id="heroLogo"></div>
+  <h1 class="hero-h">ZEROX33</h1>
+  <p class="hero-sub">ERC404 &middot; 128 Animated Cubes &middot; 16 Traits</p>
+  <div class="hero-tag"><div class="dot"></div>MEGAETH &middot; CHAIN 4326 &middot; REAL-TIME</div>
+  <div class="hero-arrow">↓ SCROLL TO MINT ↓</div>
+</section>
+
+<section class="sec" id="mint">
+  <div class="sec-label">[ SPAWN ]</div>
+  <div class="mint-grid">
+    <div class="preview">
+      <img id="pvImg" src="./assets/0.gif" alt="Preview">
+      <span class="pv-tag tl">PREVIEW</span>
+      <span class="pv-tag tr" id="pvTrait">KERNEL</span>
+      <span class="pv-tag bl">ZEROX33</span>
+      <span class="pv-tag br" id="pvId">#0</span>
+    </div>
+    <div class="panel">
+      <div class="card">
+        <div class="card-t">Contract</div>
+        <div class="r"><span class="rk">Status</span><span class="rv st" id="liveStatus">Live</span></div>
+        <div class="r"><span class="rk">Supply</span><span class="rv">5,012</span></div>
+        <div class="r"><span class="rk">Images</span><span class="rv">128 Animated Cubes</span></div>
+        <div class="r"><span class="rk">Traits</span><span class="rv">16 Categories</span></div>
+        <div class="r"><span class="rk">Tokens / Spawn</span><span class="rv">4 ZEROX33</span></div>
+        <div class="r"><span class="rk">Remaining</span><span class="rv hi" id="remaining">—</span></div>
+        <div class="r"><span class="rk">Minted</span><span class="rv" id="mintedN">—</span></div>
+        <div class="r"><span class="rk">Price</span><span class="rv hi">0.1 ETH</span></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Spawn Quantity</div>
+        <div class="qty-wrap">
+          <button class="qty-b" onclick="chgQ(-1)">−</button>
+          <div class="qty-n" id="qtyN">1</div>
+          <button class="qty-b" onclick="chgQ(1)">+</button>
+        </div>
+        <div class="qty-note">Each spawn = 4 tokens + NFTs</div>
+        <div class="cost-row">
+          <span class="cost-l">Total</span>
+          <span class="cost-v" id="costV">0.1<small>ETH</small></span>
+        </div>
+        <button class="btn-mint" id="btnM" onclick="doMint()" disabled>[ CONNECT WALLET ]</button>
+      </div>
+      <div class="card user-card" id="userCard">
+        <div class="card-t">Your Wallet</div>
+        <div class="r"><span class="rk">Balance</span><span class="rv hi" id="userBal">0</span></div>
+        <div class="r"><span class="rk">NFTs</span><span class="rv" id="userNfts">0</span></div>
+        <div class="r"><span class="rk">Address</span><span class="rv" id="userAddr" style="font-size:10px">—</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="gallery">
+  <div class="sec-label">[ COLLECTION — 128 ANIMATED CUBES ]</div>
+  <div class="gal-grid" id="galGrid"></div>
+</section>
+
+<section class="sec" id="traits">
+  <div class="sec-label">[ TRAITS — 16 CATEGORIES ]</div>
+  <div class="traits-grid" id="traitsGrid"></div>
+</section>
+
+<section class="sec" id="about">
+  <div class="sec-label">[ ABOUT ]</div>
+  <div class="about-grid">
+    <div class="about-c"><div class="about-n">01</div><div class="about-h">ERC404</div><div class="about-p">Hybrid ERC20 + ERC721. Each whole token mints an NFT. Transfer fractions freely — full tokens carry animated cube art.</div></div>
+    <div class="about-c"><div class="about-n">02</div><div class="about-h">MegaETH</div><div class="about-p">First real-time blockchain. Sub-ms latency, 100k TPS, EVM-compatible. Chain ID 4326.</div></div>
+    <div class="about-c"><div class="about-n">03</div><div class="about-h">128 Cubes</div><div class="about-p">16 trait categories × 8 color variations. KERNEL, DAEMON, THREAD, SOCKET, SIGNAL, PIPE, MUTEX, BUFFER, STACK, HEAP, CACHE, FORK, EXEC, SWAP, INODE, SYSCALL.</div></div>
+  </div>
+</section>
+
+<section class="sec" id="explorer">
+  <div class="sec-label">[ LIVE — BLOCKSCOUT ]</div>
+  <div class="exp-grid">
+    <div class="card">
+      <div class="card-t">On-Chain</div>
+      <div class="r"><span class="rk">Token</span><span class="rv" id="tkName">ZEROX33 (0X33)</span></div>
+      <div class="r"><span class="rk">Supply</span><span class="rv" id="tkSupply">5,012</span></div>
+      <div class="r"><span class="rk">Contract ETH</span><span class="rv hi" id="cEth">—</span></div>
+      <div class="r"><span class="rk">Explorer</span><a class="rv" id="expLink" href="https://megaeth.blockscout.com" target="_blank" style="text-decoration:none;font-size:10px;color:var(--text-dim)">Blockscout ↗</a></div>
+      <div class="r"><span class="rk">Holders</span><a class="rv" id="holdLink" href="https://megaeth.blockscout.com" target="_blank" style="text-decoration:none;font-size:10px;color:var(--text-dim)">View ↗</a></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Recent Transactions</div>
+      <div class="tx-feed" id="txFeed"><div class="tx-empty">Set contract address to see activity</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>ZEROX33 &middot; ERC404 on MegaETH &middot; <a href="https://zerox33.xyz">zerox33.xyz</a> &middot; <a href="https://x.com/zerox33labs" target="_blank">@zerox33labs</a> &middot; <a href="https://github.com/zerox33labs" target="_blank">GitHub</a></footer>
+
+<div class="status">
+  <div class="status-left"><div class="chain-dot" id="cDot"></div><span id="cLabel">Not connected</span></div>
+  <div class="status-right"><span id="blockN">Block: —</span></div>
+</div>
+
+<div class="toast" id="toast"><div class="toast-t" id="toastT">—</div><div id="toastM">—</div></div>
+
+<script>
+// ================================================================
+//  CONFIG
+// ================================================================
+const CA = "0x0000000000000000000000000000000000000000"; // UPDATE THIS
+const MEGA = {chainId:"0x10E6",chainName:"MegaETH",nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},rpcUrls:["https://mainnet.megaeth.com/rpc"],blockExplorerUrls:["https://megaeth.blockscout.com"]};
+const ABI=["function spawn33() payable","function balanceOf(address) view returns (uint256)","function minted() view returns (uint256)","function isSpawnEnabled() view returns (bool)","function mintPrice() view returns (uint256)","function tokenBalance() view returns (uint256)","function ownedTokens(address) view returns (uint256[])"];
+const EXPLORER='https://megaeth.blockscout.com';
+const BS=`${EXPLORER}/api`;
+const TRAITS=["KERNEL","DAEMON","THREAD","SOCKET","SIGNAL","PIPE","MUTEX","BUFFER","STACK","HEAP","CACHE","FORK","EXEC","SWAP","Z-RARE-I","Z-RARE-II"];
+
+// LOGO SVG
+const LOGO=`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="90" fill="none" stroke="#333" stroke-width="6"/><circle cx="100" cy="100" r="80" fill="#f0f0f0"/><path d="M62 52L138 52L138 63L86 136L138 136L138 147L62 147L62 136L114 63L62 63Z" fill="#1a1a1a"/><circle cx="82" cy="159" r="6.5" fill="#1a1a1a"/><circle cx="105" cy="159" r="6.5" fill="#1a1a1a"/></svg>`;
+document.getElementById('navLogo').innerHTML=LOGO;
+document.getElementById('heroLogo').innerHTML=LOGO;
+
+let provider,signer,contract,userAddr;
+let qty=1,price=ethers.parseEther("0.1");
+
+function getTier(id){
+    const h=ethers.keccak256(ethers.AbiCoder.defaultAbiCoder().encode(["uint256"],[id]));
+    const seed=BigInt(h);
+    const imgIdx=Number(seed % 128n);
+    const traitIdx=Math.floor(imgIdx/8);
+    return {imgIdx,traitIdx,trait:TRAITS[traitIdx],variation:imgIdx%8};
+}
+
+// PREVIEW ROTATION
+let pvIdx=0;
+function rotPV(){
+    pvIdx=pvIdx%128;
+    const ti=Math.floor(pvIdx/8);
+    document.getElementById('pvImg').src=`${ASSET_BASE}${pvIdx}.gif`;
+    document.getElementById('pvTrait').textContent=TRAITS[ti];
+    document.getElementById('pvId').textContent=`#${pvIdx}`;
+    pvIdx++;
+}
+rotPV(); setInterval(rotPV,3500);
+
+// GALLERY — show samples from all traits
+const ASSET_BASE = './assets/'; // works both locally and on server
+
+function renderGal(ids){
+    const g=document.getElementById('galGrid');g.innerHTML='';
+    let items;
+    if(ids&&ids.length>0){
+        items=ids.map(id=>{const t=getTier(id);return{id,img:t.imgIdx,trait:t.trait}});
+    } else {
+        // Show 2 per trait = 32 samples
+        items=[];
+        for(let ti=0;ti<16;ti++){
+            items.push({id:ti*8, img:ti*8, trait:TRAITS[ti]});
+            items.push({id:ti*8+3, img:ti*8+3, trait:TRAITS[ti]});
+        }
+    }
+    items.forEach(it=>{
+        const d=document.createElement('div');d.className='gal-item';
+        d.innerHTML=`<div class="gal-item-img"><img src="${ASSET_BASE}${it.img}.gif" alt="ZEROX33 #${it.id}" loading="lazy" onerror="this.parentElement.style.background='#222'"></div><div class="gal-item-meta"><span class="gal-item-name">ZEROX33 #${it.id}</span><span class="gal-item-trait">${it.trait}</span></div>`;
+        g.appendChild(d);
+    });
+}
+renderGal(null);
+
+// TRAITS TABLE
+(function(){
+    const g=document.getElementById('traitsGrid');
+    TRAITS.forEach((t,i)=>{
+        const d=document.createElement('div');d.className='trait-chip';
+        d.innerHTML=`<div class="trait-chip-name">${t}</div><div class="trait-chip-count">8 variations · GIFs ${i*8}–${i*8+7}</div>`;
+        g.appendChild(d);
+    });
+})();
+
+// WALLET
+async function connectWallet(){
+    if(!window.ethereum){toast('No Wallet','Install MetaMask','');return}
+    try{
+        provider=new ethers.BrowserProvider(window.ethereum);
+        await provider.send("eth_requestAccounts",[]);
+        signer=await provider.getSigner();userAddr=await signer.getAddress();
+        try{await window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:MEGA.chainId}]})}
+        catch(e){if(e.code===4902)await window.ethereum.request({method:"wallet_addEthereumChain",params:[MEGA]})}
+        contract=new ethers.Contract(CA,ABI,signer);
+        const s=userAddr.slice(0,6)+'…'+userAddr.slice(-4);
+        document.getElementById('btnC').textContent=`[ ${s} ]`;document.getElementById('btnC').classList.add('on');
+        document.getElementById('cDot').classList.add('on');document.getElementById('cLabel').textContent=`MegaETH · ${s}`;
+        document.getElementById('btnM').disabled=false;document.getElementById('btnM').textContent='[ SPAWN ZEROX33 ]';
+        document.getElementById('userCard').classList.add('show');
+        await refresh();toast('Connected',s,'');
+    }catch(e){console.error(e);toast('Error',e.message||'Failed','')}
+}
+
+async function refresh(){
+    if(!contract)return;
+    try{
+        const[m,tb,en,mp]=await Promise.all([contract.minted(),contract.tokenBalance(),contract.isSpawnEnabled(),contract.mintPrice()]);
+        price=mp;document.getElementById('mintedN').textContent=m.toString();document.getElementById('remaining').textContent=tb.toString();
+        const st=document.getElementById('liveStatus');st.textContent=en?'Live':'Paused';
+        if(userAddr){
+            const b=await contract.balanceOf(userAddr);const o=await contract.ownedTokens(userAddr);
+            document.getElementById('userBal').textContent=parseFloat(ethers.formatEther(b)).toFixed(2)+' ZEROX33';
+            document.getElementById('userNfts').textContent=o.length.toString();
+            document.getElementById('userAddr').textContent=userAddr.slice(0,10)+'…'+userAddr.slice(-6);
+            if(o.length>0)renderGal(o.map(t=>Number(t)));
+        }
+        const bl=await provider.getBlockNumber();document.getElementById('blockN').textContent=`Block: ${bl.toLocaleString()}`;
+    }catch(e){console.error('Refresh:',e)}
+}
+
+async function doMint(){
+    if(!contract)return;
+    const b=document.getElementById('btnM');b.disabled=true;b.classList.add('ing');b.textContent='[ SPAWNING… ]';
+    try{
+        for(let i=0;i<qty;i++){const tx=await contract.spawn33({value:price});toast('TX Sent',`${i+1}/${qty}: ${tx.hash.slice(0,16)}…`,'');await tx.wait()}
+        toast('Success',`${qty*4} ZEROX33 spawned`,'');await refresh();
+    }catch(e){toast('Failed',(e.reason||e.message||'').slice(0,120),'')}
+    finally{b.disabled=false;b.classList.remove('ing');b.textContent='[ SPAWN ZEROX33 ]'}
+}
+
+function chgQ(d){qty=Math.max(1,Math.min(10,qty+d));document.getElementById('qtyN').textContent=qty;document.getElementById('costV').innerHTML=`${(0.1*qty).toFixed(1)}<small>ETH</small>`}
+
+function toast(t,m){const e=document.getElementById('toast');document.getElementById('toastT').textContent=t;document.getElementById('toastM').textContent=m;e.className='toast show';clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),4500)}
+
+// BLOCKSCOUT
+async function fetchBS(){
+    if(CA==='0x0000000000000000000000000000000000000000')return;
+    try{
+        const r=await fetch(`${BS}?module=token&action=getToken&contractaddress=${CA}`);const d=await r.json();
+        if(d.status==='1'&&d.result){document.getElementById('tkName').textContent=`${d.result.name} (${d.result.symbol})`}
+        const r2=await fetch(`${BS}?module=account&action=balance&address=${CA}`);const d2=await r2.json();
+        if(d2.status==='1')document.getElementById('cEth').textContent=parseFloat(ethers.formatEther(d2.result)).toFixed(4)+' ETH';
+        document.getElementById('expLink').href=`${EXPLORER}/address/${CA}`;document.getElementById('holdLink').href=`${EXPLORER}/token/${CA}`;
+        const r3=await fetch(`${BS}?module=account&action=txlist&address=${CA}&page=1&offset=5&sort=desc`);const d3=await r3.json();
+        if(d3.status==='1'&&d3.result){
+            const c=document.getElementById('txFeed');c.innerHTML='';
+            d3.result.slice(0,5).forEach(tx=>{
+                const f=tx.from?tx.from.slice(0,6)+'…'+tx.from.slice(-4):'—';
+                const t=tx.to?tx.to.slice(0,6)+'…'+tx.to.slice(-4):'Contract';
+                const diff=Date.now()-parseInt(tx.timeStamp)*1000;
+                const ago=diff<60000?Math.floor(diff/1000)+'s':diff<3600000?Math.floor(diff/60000)+'m':diff<86400000?Math.floor(diff/3600000)+'h':Math.floor(diff/86400000)+'d';
+                const a=document.createElement('a');a.className='tx-row';a.href=`${EXPLORER}/tx/${tx.hash}`;a.target='_blank';
+                a.innerHTML=`<span class="tx-addrs">${f} → ${t}</span><span class="tx-time">${ago} ago</span>`;
+                c.appendChild(a);
+            });
+        }
+    }catch(e){console.log('BS:',e.message)}
+}
+fetchBS();setInterval(fetchBS,25000);
+
+if(window.ethereum){window.ethereum.on('accountsChanged',()=>location.reload());window.ethereum.on('chainChanged',()=>location.reload())}
+</script>
+</body>
+</html>
